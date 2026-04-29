@@ -22,7 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Roboto; Arial;
+  font-family: Roboto, Arial;
 }
 
 header {
@@ -68,8 +68,22 @@ header {
   min-height: 500px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  margin-right: 50%;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-right: 33%;
+}
+
+.hero-image {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.hero-content {
+  flex: 1;
+  margin-top: -150px;
 }
 
 .hero-content h1 {
