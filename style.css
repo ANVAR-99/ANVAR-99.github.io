@@ -169,6 +169,38 @@ header {
   margin-bottom: var(--spacing-sm);
 }
 
+.projects {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 80px var(--spacing-xl);
+}
+
+.projects-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.projects h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary-color);
+}
+
+.projects h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+}
+
+.projects p {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-md);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
