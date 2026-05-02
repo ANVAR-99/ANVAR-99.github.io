@@ -16,6 +16,8 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
+
+  --about-projects-content-max-width: 680px;
 }
 
 * {
@@ -132,7 +134,7 @@ header {
 }
 
 .about-container {
-  max-width: 900px;
+  max-width: var(--about-projects-content-max-width);
   margin: 0 auto;
 }
 
@@ -176,7 +178,7 @@ header {
 }
 
 .projects-container {
-  max-width: 900px;
+  max-width: var(--about-projects-content-max-width);
   margin: 0 auto;
 }
 
