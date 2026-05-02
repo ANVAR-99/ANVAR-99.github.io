@@ -166,6 +166,12 @@ header {
   color: var(--background-color);
   text-decoration: none;
   transition: color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .nav-links a:hover {
@@ -481,6 +487,19 @@ header {
   color: var(--secondary-color);
   line-height: 1.5;
   margin-top: var(--spacing-sm);
+}
+
+/* Safari-specific mobile fixes */
+@supports (-webkit-touch-callout: none) {
+  .nav-links a {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .navbar {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
 }
 
 /* Responsive Design */

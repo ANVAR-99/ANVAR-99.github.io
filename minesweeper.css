@@ -1,3 +1,15 @@
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .minesweeper-board {
+    max-width: -webkit-calc(8 * var(--cell-size) + 7 * 2px + 2 * var(--spacing-sm));
+    max-width: calc(8 * var(--cell-size) + 7 * 2px + 2 * var(--spacing-sm));
+  }
+  
+  .minesweeper-cell {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+}
+
 /* Prevent text selection globally for minesweeper */
 html.minesweeper-embed-mode body,
 html.minesweeper-embed-mode *,
@@ -128,9 +140,15 @@ html.minesweeper-embed-mode .site-footer {
 
 .minesweeper-board {
   --cell-size: clamp(32px, 8vw, 48px);
-  display: grid;
-  grid-template-columns: repeat(8, var(--cell-size));
-  grid-template-rows: repeat(8, var(--cell-size));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   gap: 2px;
   padding: var(--spacing-sm);
   background-color: #c0c0c0;
@@ -152,6 +170,20 @@ html.minesweeper-embed-mode .site-footer {
   -ms-tap-highlight-color: transparent;
 }
 
+@supports (display: grid) {
+  .minesweeper-board {
+    display: grid;
+    grid-template-columns: repeat(8, var(--cell-size));
+    grid-template-rows: repeat(8, var(--cell-size));
+    -webkit-box-pack: initial;
+    -ms-flex-pack: initial;
+    justify-content: initial;
+    -webkit-flex-wrap: initial;
+    -ms-flex-wrap: initial;
+    flex-wrap: initial;
+  }
+}
+
 .minesweeper-cell {
   width: var(--cell-size);
   height: var(--cell-size);
@@ -162,8 +194,14 @@ html.minesweeper-embed-mode .site-footer {
   font-size: calc(var(--cell-size) * 0.5);
   font-weight: 700;
   line-height: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   cursor: pointer;
   box-sizing: border-box;
@@ -185,6 +223,8 @@ html.minesweeper-embed-mode .site-footer {
   backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  position: relative;
+  z-index: 1;
 }
 
 .minesweeper-cell:focus-visible {
