@@ -128,7 +128,7 @@
     floodReveal(r, c);
     if (checkWin()) {
       gameOver = true;
-      statusEl.textContent = 'You win!';
+      statusEl.textContent = 'You won, thank you for visiting my website!';
     } else {
       statusEl.textContent = '';
     }
@@ -149,6 +149,20 @@
 
   function cellDisabled(cell) {
     return gameOver || cell.revealed;
+  }
+
+  const LONG_PRESS_MS = 500;
+  const TOUCH_MOVE_CANCEL_PX = 14;
+  let suppressClick = false;
+  let longPressTimer = null;
+  let touchTracking = null;
+  let longPressFired = false;
+
+  function touchById(touchList, id) {
+    for (let i = 0; i < touchList.length; i++) {
+      if (touchList[i].identifier === id) return touchList[i];
+    }
+    return null;
   }
 
   function render() {
@@ -201,17 +215,125 @@
     updateMinesLeft();
   }
 
+  function scheduleClearSuppress() {
+    window.setTimeout(() => {
+      suppressClick = false;
+    }, 380);
+  }
+
+  boardEl.addEventListener(
+    'touchstart',
+    (e) => {
+      if (e.touches.length !== 1) return;
+      const btn = e.target.closest('.minesweeper-cell');
+      if (!btn || btn.disabled || gameOver) return;
+      const t = e.touches[0];
+      if (longPressTimer) window.clearTimeout(longPressTimer);
+      longPressFired = false;
+      touchTracking = {
+        id: t.identifier,
+        r: +btn.dataset.r,
+        c: +btn.dataset.c,
+        x: t.clientX,
+        y: t.clientY,
+        t0: Date.now(),
+      };
+      longPressTimer = window.setTimeout(() => {
+        longPressTimer = null;
+        if (!touchTracking) return;
+        longPressFired = true;
+        toggleFlag(touchTracking.r, touchTracking.c);
+        try {
+          navigator.vibrate(15);
+        } catch (_) {
+          /* ignore */
+        }
+      }, LONG_PRESS_MS);
+    },
+    { passive: true },
+  );
+
+  boardEl.addEventListener(
+    'touchmove',
+    (e) => {
+      if (!touchTracking || !longPressTimer) return;
+      const t = touchById(e.touches, touchTracking.id);
+      if (!t) return;
+      const dx = t.clientX - touchTracking.x;
+      const dy = t.clientY - touchTracking.y;
+      if (dx * dx + dy * dy > TOUCH_MOVE_CANCEL_PX * TOUCH_MOVE_CANCEL_PX) {
+        window.clearTimeout(longPressTimer);
+        longPressTimer = null;
+      }
+    },
+    { passive: true },
+  );
+
+  boardEl.addEventListener(
+    'touchend',
+    (e) => {
+      if (!touchTracking) return;
+      const t = touchById(e.changedTouches, touchTracking.id);
+      if (!t) return;
+      if (longPressTimer) {
+        window.clearTimeout(longPressTimer);
+        longPressTimer = null;
+      }
+      const start = touchTracking;
+      touchTracking = null;
+
+      if (longPressFired) {
+        longPressFired = false;
+        suppressClick = true;
+        scheduleClearSuppress();
+        e.preventDefault();
+        return;
+      }
+
+      const endBtn = e.target.closest('.minesweeper-cell');
+      if (
+        !endBtn ||
+        endBtn.disabled ||
+        +endBtn.dataset.r !== start.r ||
+        +endBtn.dataset.c !== start.c
+      ) {
+        return;
+      }
+
+      if (Date.now() - start.t0 >= LONG_PRESS_MS) return;
+
+      suppressClick = true;
+      scheduleClearSuppress();
+      reveal(start.r, start.c);
+      e.preventDefault();
+    },
+    { passive: false },
+  );
+
+  boardEl.addEventListener('touchcancel', () => {
+    if (longPressTimer) {
+      window.clearTimeout(longPressTimer);
+      longPressTimer = null;
+    }
+    touchTracking = null;
+    longPressFired = false;
+  });
+
   boardEl.addEventListener('click', (e) => {
+    if (suppressClick) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     const btn = e.target.closest('.minesweeper-cell');
     if (!btn || btn.disabled) return;
     reveal(+btn.dataset.r, +btn.dataset.c);
   });
 
   boardEl.addEventListener('contextmenu', (e) => {
-    const btn = e.target.closest('.minesweeper-cell');
-    if (!btn) return;
     e.preventDefault();
-    if (gameOver) return;
+    const btn = e.target.closest('.minesweeper-cell');
+    if (!btn || gameOver) return;
     const r = +btn.dataset.r;
     const c = +btn.dataset.c;
     const cell = cells[idx(r, c)];
