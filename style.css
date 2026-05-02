@@ -173,8 +173,6 @@ header {
   background-color: var(--background-color);
   color: var(--text-color);
   padding: 80px var(--spacing-xl);
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
 .projects-container {
