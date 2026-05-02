@@ -25,16 +25,18 @@
   </header>
 
   <section class="about">
-    <div class="about-container">
-      <h1>About Me</h1>
+    <div class="page-with-toc">
+      <div class="page-with-toc-main">
+        <div class="about-container">
+          <h1 id="about-me">About Me</h1>
       <p>
         Hello! I'm Anvar Nabili, a passionate student of mathematics at ADA University. I have a deep interest in solving complex problems and exploring the beauty of mathematical concepts.
       </p>
-      <h2>Education</h2>
+      <h2 id="education">Education</h2>
       <p>
         In 2025, I graduated from school number 271 with the highest overall exam score among russian section in State Exam Center exams - 661.4 points. I was in top ~1% of Group I "RK"(Mathematics-chemistry subgroup) in the whole country. I am currently studying Mathematics at ADA University, where I focus on advanced topics and practical applications of mathematical theory.
       </p>
-      <h2>Skills</h2>
+      <h2 id="skills">Skills</h2>
       <div class="about-skills-layout">
         <ul>
           <li>Mathematics & Problem Solving</li>
@@ -51,10 +53,38 @@
         </ul>
         <img src="images/graduation.jpg" alt="Graduation photo" class="about-skills-photo">
       </div>
-      <h2>Interests</h2>
+      <h2 id="interests">Interests</h2>
       <p>
         Beyond academics, I enjoy working on diverse projects that combine mathematics with technology. I'm always eager to learn new skills and take on challenging projects that push my boundaries. 
       </p>
+        </div>
+      </div>
+      <aside class="page-toc" aria-label="Site table of contents">
+        <p class="page-toc-title">Contents</p>
+        <nav>
+          <ul class="page-toc-list">
+            <li><a href="index.html#home">Home</a></li>
+            <li>
+              <a href="about.html#about-me">About</a>
+              <ul>
+                <li><a href="about.html#education">Education</a></li>
+                <li><a href="about.html#skills">Skills</a></li>
+                <li><a href="about.html#interests">Interests</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="projects.html#my-projects">Projects</a>
+              <ul>
+                <li><a href="projects.html#logic-gates">Logic Gates</a></li>
+                <li><a href="projects.html#hour-of-ai">Hour of AI</a></li>
+                <li><a href="projects.html#robotics">Robotics</a></li>
+                <li><a href="projects.html#minesweeper">Minesweeper</a></li>
+              </ul>
+            </li>
+            <li><a href="minesweeper.html#minesweeper-game">Minesweeper (game)</a></li>
+          </ul>
+        </nav>
+      </aside>
     </div>
   </section>
   </div>

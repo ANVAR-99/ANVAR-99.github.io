@@ -25,8 +25,10 @@
   </header>
 
   <section class="projects">
-    <div class="projects-container">
-      <h1>My Projects</h1>
+    <div class="page-with-toc">
+      <div class="page-with-toc-main">
+        <div class="projects-container">
+      <h1 id="my-projects">My Projects</h1>
       <p>
         This page is dedicated to, but not limited with, projects within course called Principles of Information Systems (SITE-1101). 
         It is an introductory course for School of IT & Engineering of ADA University. 
@@ -34,7 +36,7 @@
         As a result, we were divided to teams and through collaboration we utilized our knowledge during these projects. 
         This website is also a project for this course.</p>
 
-      <h2>Logic Gates</h2>
+      <h2 id="logic-gates">Logic Gates</h2>
       <figure class="project-figure">
         <img src="images/NOT-gate.jpg" alt="NOT gate circuit on a breadboard with wiring, switches, and an LED indicating output" class="project-image">
         <figcaption>NOT gate assembled on a breadboard: it reverses the input signal, and an LED shows the gate output in real time(since there is no signal, LED is on).</figcaption>
@@ -51,7 +53,7 @@
         During this project, we also collaborated with other team to make NAND- and XOR-gates. 
       </p>
 
-      <h2>Hour of AI</h2>
+      <h2 id="hour-of-ai">Hour of AI</h2>
       <figure class="project-figure">
         <img src="images/Hour_of_code.jpg" alt="Students taking part in a Hour of AI workshop at school number 135" class="project-image">
         <figcaption>During our visit to School No. 135, seventh- and eighth-grade students explored AI ideas and algorithms through guided, hands-on activities.</figcaption>
@@ -64,7 +66,7 @@
         After a fascinating session in which stusents learned essence of AI technologies and algorithms as well as implemented them in practice, we gathered certificates to encourage students for expanding broader concepts.
       </p>
 
-      <h2>Robotics</h2>
+      <h2 id="robotics">Robotics</h2>
       <figure class="project-figure">
         <img src="images/Robotics.jpg" alt="LEGO Mindstorms EV3 robot configured for a drawing task with motors and sensors" class="project-image">
         <figcaption>Our EV3 robot integrated motors, sensors, and a marker setup so programmed instructions could be turned into controlled drawing motion. With this robot we drew nice circles and flowers.</figcaption>
@@ -77,7 +79,7 @@
         Through this project, abstract concepts like algorithms and coordinate control became tangible. It demonstrated not only an understanding of robotics and programming, but also problem-solving skills, iteration, and the ability to turn a creative idea into a functioning, real-world system.
       </p>
 
-      <h2>Minesweeper</h2>
+      <h2 id="minesweeper">Minesweeper</h2>
       <p>
         Nowadays, people like to place red flags but let's place them where they are actually needed. Play browser-based Minesweeper (8 × 8 grid, 10 mines) built for this site: on desktop, left-click reveals and right-click flags; on a phone, tap reveals and a long press flags.
         You can play directly below or <a href="minesweeper.html">open the full page</a> for the same game with the site navigation.
@@ -89,6 +91,34 @@
           title="Minesweeper — 8 by 8 grid, 10 mines"
           loading="lazy"></iframe>
       </div>
+        </div>
+      </div>
+      <aside class="page-toc" aria-label="Site table of contents">
+        <p class="page-toc-title">Contents</p>
+        <nav>
+          <ul class="page-toc-list">
+            <li><a href="index.html#home">Home</a></li>
+            <li>
+              <a href="about.html#about-me">About</a>
+              <ul>
+                <li><a href="about.html#education">Education</a></li>
+                <li><a href="about.html#skills">Skills</a></li>
+                <li><a href="about.html#interests">Interests</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="projects.html#my-projects">Projects</a>
+              <ul>
+                <li><a href="projects.html#logic-gates">Logic Gates</a></li>
+                <li><a href="projects.html#hour-of-ai">Hour of AI</a></li>
+                <li><a href="projects.html#robotics">Robotics</a></li>
+                <li><a href="projects.html#minesweeper">Minesweeper</a></li>
+              </ul>
+            </li>
+            <li><a href="minesweeper.html#minesweeper-game">Minesweeper (game)</a></li>
+          </ul>
+        </nav>
+      </aside>
     </div>
   </section>
   </div>

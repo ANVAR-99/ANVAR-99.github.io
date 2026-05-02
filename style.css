@@ -317,6 +317,101 @@ header {
   margin: 0 auto;
 }
 
+/* About/Projects layout with right-side table of contents */
+.page-with-toc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+}
+
+.page-with-toc-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-toc {
+  width: 220px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: sticky;
+  top: var(--spacing-md);
+  height: 420px;
+  text-align: left;
+  overflow: auto;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: #fafafa;
+  font-size: var(--font-size-small);
+  color: var(--secondary-color);
+}
+
+/* Prevent About page list styles from affecting TOC */
+.page-toc li {
+  font-size: var(--font-size-small);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.page-toc-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-sm);
+}
+
+.page-toc-list,
+.page-toc-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-toc-list ul {
+  margin-top: var(--spacing-xs);
+  margin-left: var(--spacing-md);
+  border-left: 2px solid var(--border-color);
+  padding-left: var(--spacing-sm);
+}
+
+.page-toc-list > li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.page-toc-list li li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.page-toc-list a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.page-toc-list a:hover {
+  color: var(--accent-color);
+}
+
+.about h1[id],
+.about h2[id],
+.projects h1[id],
+.projects h2[id] {
+  scroll-margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 900px) {
+  .page-with-toc {
+    padding: 0 var(--spacing-md);
+  }
+
+  .page-toc {
+    display: none;
+  }
+}
+
 .projects h1 {
   font-size: 42px;
   font-weight: 700;
@@ -467,6 +562,10 @@ header {
 
   .about {
     padding: 30px var(--spacing-sm);
+  }
+
+  .page-with-toc {
+    padding: 0 var(--spacing-sm);
   }
 
   .about h1 {
