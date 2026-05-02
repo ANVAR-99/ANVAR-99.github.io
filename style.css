@@ -225,7 +225,8 @@ header {
   }
 
   .hero-image img {
-    width: 90%;
+    width: 130%;
+    max-width: 380px;
   }
 }
 
@@ -516,8 +517,9 @@ header {
   }
 
   .hero-image {
-    width: 250px;
-    height: 300px;
+    width: 340px;
+    height: 400px;
+    max-width: 100%;
     order: -1;
   }
 
@@ -571,8 +573,11 @@ header {
   }
 
   .hero-image {
-    width: 200px;
-    height: 250px;
+    width: 100%;
+    height: 300px;
+    max-width: 320px;
+    margin: 0 auto;
+    display: block;
   }
 
   .hero-content h1 {
