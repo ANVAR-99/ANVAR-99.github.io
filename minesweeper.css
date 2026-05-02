@@ -11,6 +11,10 @@ html.minesweeper-embed-mode body {
   margin: 0;
 }
 
+html.minesweeper-embed-mode .site-footer {
+  display: none;
+}
+
 .minesweeper-logo-link {
   color: inherit;
   text-decoration: none;
