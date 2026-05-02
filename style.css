@@ -175,21 +175,21 @@ header {
 .hero {
   background-color: var(--background-color);
   color: var(--text-color);
-  padding: 100px var(--spacing-xl);
+  padding: 72px var(--spacing-xl);
   text-align: left;
   min-height: 500px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: left;
   gap: var(--spacing-lg);
-  max-width: 900px;
+  max-width: 1200px;
   margin: 56px auto 0 auto;
-  margin-right: 400px;
 }
 
 .hero-image {
   width: 300px;
   height: 400px;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 10px;
   flex-shrink: 0;
@@ -197,7 +197,8 @@ header {
 
 .hero-content {
   flex: 1;
-  margin-top: -120px;
+  margin-top: 0;
+  max-width: 52ch;
 }
 
 .hero-content h1 {
@@ -210,6 +211,16 @@ header {
   font-size: var(--font-size-large);
   margin-bottom: var(--spacing-lg);
   opacity: 0.9;
+}
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .hero-image img {
+    width: 90%;
+  }
 }
 
 .cta-button {
@@ -482,7 +493,6 @@ header {
     flex-direction: column;
     padding: 40px var(--spacing-md);
     min-height: auto;
-    margin-right: 0;
     max-width: 100%;
   }
 
