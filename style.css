@@ -171,6 +171,31 @@ header {
   margin-bottom: var(--spacing-sm);
 }
 
+.about-skills-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.about-skills-layout > ul {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.about-skills-photo {
+  display: block;
+  width: auto;
+  max-width: min(300px, 50%);
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
 .projects {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -269,6 +294,15 @@ header {
   .about h2 {
     font-size: 22px;
   }
+
+  .about-skills-layout {
+    gap: var(--spacing-md);
+  }
+
+  .about-skills-photo {
+    max-width: min(280px, 48%);
+    max-height: 360px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -314,6 +348,23 @@ header {
 
   .about h2 {
     font-size: 18px;
+  }
+
+  .about-skills-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .about-skills-layout > ul {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .about-skills-photo {
+    max-width: 100%;
+    max-height: 340px;
+    object-fit: cover;
   }
 }
 
