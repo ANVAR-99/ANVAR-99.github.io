@@ -1,3 +1,20 @@
+/* Prevent text selection globally for minesweeper */
+html.minesweeper-embed-mode body,
+html.minesweeper-embed-mode *,
+body.minesweeper-page *,
+.minesweeper-panel *,
+.minesweeper-board *,
+.minesweeper-cell * {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -moz-tap-highlight-color: transparent !important;
+  -ms-tap-highlight-color: transparent !important;
+}
+
 html.minesweeper-embed-mode header {
   display: none;
 }
@@ -36,6 +53,7 @@ html.minesweeper-embed-mode .site-footer {
 .minesweeper-panel {
   max-width: 520px;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .minesweeper-title {
@@ -118,9 +136,11 @@ html.minesweeper-embed-mode .site-footer {
   background-color: #c0c0c0;
   border-radius: 8px;
   border: 2px solid #808080;
-  width: fit-content;
-  max-width: 100%;
+  width: 100%;
+  max-width: min(calc(8 * var(--cell-size) + 7 * 2px + 2 * var(--spacing-sm)), 100vw);
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -158,6 +178,13 @@ html.minesweeper-embed-mode .site-footer {
   -ms-user-select: none;
   -webkit-touch-callout: none;
   outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .minesweeper-cell:focus-visible {
@@ -267,6 +294,7 @@ html.minesweeper-embed-mode .site-footer {
     gap: 1px;
     padding: var(--spacing-xs);
     border: 1px solid #808080;
+    max-width: min(calc(8 * var(--cell-size) + 7 * 1px + 2 * var(--spacing-xs)), 100vw);
   }
 
   .minesweeper-cell {
@@ -283,6 +311,7 @@ html.minesweeper-embed-mode .site-footer {
 @media (max-width: 360px) {
   .minesweeper-board {
     --cell-size: clamp(26px, 6.5vw, 36px);
+    max-width: min(calc(8 * var(--cell-size) + 7 * 1px + 2 * var(--spacing-xs)), 100vw);
   }
 
   .minesweeper-cell {
