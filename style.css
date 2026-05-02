@@ -203,6 +203,28 @@ header {
   margin-bottom: var(--spacing-md);
 }
 
+.project-figure {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.project-figure .project-image {
+  margin-bottom: 0;
+}
+
+.project-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.projects figcaption {
+  font-size: var(--font-size-small);
+  color: var(--secondary-color);
+  line-height: 1.5;
+  margin-top: var(--spacing-sm);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-links {
